@@ -1,0 +1,56 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": ["./base.oxlintrc.json"],
+  "plugins": ["oxc", "typescript", "unicorn", "import", "react", "jsx-a11y"],
+  "jsPlugins": [
+    "@stylistic/eslint-plugin",
+    {
+      "name": "import-order",
+      "specifier": "eslint-plugin-import"
+    },
+    "eslint-plugin-better-tailwindcss"
+  ],
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "serviceworker": true
+  },
+  "rules": {
+    "better-tailwindcss/enforce-consistent-class-order": "warn",
+    "better-tailwindcss/enforce-consistent-line-wrapping" : [
+      "warn",
+      {
+        "strictness": "loose",
+        "printWidth": 100,
+        "tabWidth": 2,
+        "indent": 2,
+        "preferSingleLine": true
+      }
+    ],
+    "better-tailwindcss/no-deprecated-classes": "warn",
+    "better-tailwindcss/no-duplicate-classes": "warn",
+    "better-tailwindcss/no-unnecessary-whitespace": "warn",
+    "better-tailwindcss/enforce-canonical-classes": "warn",
+    "better-tailwindcss/no-concatenated-classes": "error",
+    "better-tailwindcss/no-conflicting-classes": "error",
+    "better-tailwindcss/no-unknown-classes": "error",
+    "jsx-a11y/alt-text": "error",
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}"],
+      "rules": {
+        "react/self-closing-comp": [
+          "warn",
+          {
+            "component": true
+          }
+        ],
+        "react/jsx-no-comment-textnodes": "off",
+        "react/react-in-jsx-scope": "off"
+      }
+    }
+  ]
+}
